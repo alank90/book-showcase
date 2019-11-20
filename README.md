@@ -1,4 +1,5 @@
 # Default starter for Gridsome
+[Taken from "Building a Showcase site with Gridsome + Netlify"]( https://medium.com/the-web-tub/building-a-showcase-site-with-gridsome-netlify-977d51432838)
 
 This is the project you get when you run `gridsome create new-project`.
 

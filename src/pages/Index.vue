@@ -28,6 +28,7 @@ export default {
 
 <style>
 .home-links a {
+  font-size: 1.3rem;
   margin-right: 1rem;
 }
 </style>
