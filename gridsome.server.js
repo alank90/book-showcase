@@ -35,9 +35,9 @@ module.exports = function(api) {
     } // end for loop
 
     /* Use Gridsome’s Data Store API to create a new type in our GraphQL data layer 
-       by calling the store.addContentType() method. First we define our data in 
+       by calling the store.addCollection() method. First we define our data in 
        GraphQL */
-    const contentType = store.addContentType({
+    const contentType = store.addCollection({
       typeName: "BookEntry",
       route: "showcase/:id"
     });

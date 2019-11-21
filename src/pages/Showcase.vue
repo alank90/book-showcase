@@ -1,6 +1,13 @@
+<!-- Gridsome offers two blocks for fetching data from the Data Layer,
+ <page-query> and <static-query>. The former saves the result in the $page variable 
+ and should be used in pages and templates. The latter saves the result in the 
+ $static variable and is advised to be used in components. 
+ -->
+
 <template>
   <Layout>
     <div class="books">
+      <!-- $page.allBookEntry.edges contains results of <page-query> fetch -->
       <div class="book" v-for="book in $page.allBookEntry.edges" :key="book.node.id">
         <h2>
           <g-link :to="`showcase/${book.node.id}`">{{ book.node.title }}</g-link>
@@ -8,17 +15,17 @@
 
         <div class="content">
           <div class="img-wrapper">
-            <g-image :src="book.node.cover.medium" />
+            <g-image :src="book.node.fields.cover.medium" />
           </div>
 
-          <div>{{ shortenText(book.node.byStatement) }}</div>
+          <div>{{ shortenText(book.node.fields.by_statement) }}</div>
         </div>
 
         <div class="book-footer">
-          <div>{{ book.node.publishDate }}</div>
+          <div>{{ book.node.fields.publish_date }}</div>
           <div>
             By
-            <span v-html="book.node.authors[0].name"></span>
+            <span v-html="book.node.fields.authors[0].name"></span>
           </div>
         </div>
       </div>
@@ -26,30 +33,31 @@
   </Layout>
 </template>
 
-<!-- We fetch the books through the <page-query> block where we can execute GraphQL queries -->
+<!-- We fetch the books through the <page-query> block where we can execute GraphQL queries
+     that we stored in book array in gridsome.server.js -->
 <page-query>
     query{
         allBookEntry{
             edges{
                 node{
-                    id
-                    title
-                    fields {
-                    authors{
-                    name
-                    }
-                    cover {
-                    medium
-                    }
-                    by_statement
-                    publish_date
-                    url
-                    subject_places{
-                    name
-                    }
-                number_of_pages
-                notes
-                }
+                      id
+                      title
+                      fields {
+                        authors{
+                          name
+                        }
+                        cover {
+                          medium
+                        }
+                        by_statement
+                        publish_date
+                        url
+                        subject_places{
+                          name
+                        }
+                        number_of_pages
+                        notes
+                      }
 
                 }
             }
