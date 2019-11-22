@@ -34,7 +34,7 @@ module.exports = function(api) {
       }
     } // end for loop
 
-    /* Use Gridsome’s Data Store API to create a new type in our GraphQL data layer 
+    /* Use Gridsome’s Data Store API to create a new collection in our GraphQL data layer 
        by calling the store.addCollection() method. First we define our data in 
        GraphQL */
     const contentType = store.addCollection({
@@ -43,7 +43,7 @@ module.exports = function(api) {
     });
 
     /* Next we store our data retrieved via axios from openlibrary in the GraphQL
-       storage engine. GraphQL allows you to define types, their fields and allows 
+       data layer. GraphQL allows you to define types, their fields and allows 
        you to query or mutate those types’ fields. */
     for (const item of books) {
       contentType.addNode({
