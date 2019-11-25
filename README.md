@@ -3,6 +3,17 @@
 
 This is the project you get when you run `gridsome create new-project`.
 
+**Note**: To enable page-query & static-query tags from GraphQL in .vue file
+add this to settings.json 
+
+"vetur.grammar.customBlocks": {
+        "page-query": "graphql",
+        "static-query": "graphql"
+
+ }
+
+ and then *Ctrl + Shift + P -> vetur: Generate grammar* and look for drop down command
+
 ### 1. Install Gridsome CLI tool if you don't have
 
 `npm install --global @gridsome/cli`
