@@ -3,8 +3,7 @@
 
 This is the project you get when you run `gridsome create new-project`.
 
-**Note**: To enable page-query & static-query tags from GraphQL in .vue file
-add this to settings.json 
+**Note**: To enable page-query & static-query tags from GraphQL in .vue file first install extension GraphQL for VSCode and then add this to settings.json 
 
 "vetur.grammar.customBlocks": {
         "page-query": "graphql",

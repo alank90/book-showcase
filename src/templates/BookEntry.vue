@@ -2,12 +2,12 @@
   <Layout>
     <div class="book">
       <h2>
-        <a :href="$page.bookentry.url">{{ $page.bookEntry.title }}</a>
+        <a :href="$page.bookEntry.url">{{ $page.bookEntry.title }}</a>
       </h2>
 
       <div>
         <div class="img-wrapper">
-          <g-image :src="$page.bookEntry.cover.large" />
+          <g-image :src="$page.bookEntry.fields.cover.large" />
         </div>
       </div>
 
@@ -21,10 +21,13 @@
         </ul>
       </div>
 
-      <div v-if="$page.bookEntry.publishPlaces.length">
+      <div v-if="$page.bookEntry.fields.publish_places.length">
         <h4>Publish Places</h4>
         <ul>
-          <li v-for="place in $page.bookEntry.publishPlaces" :key="place.name">{{ place.name }}</li>
+          <li
+            v-for="place in $page.bookEntry.fields.publish_places"
+            :key="place.name"
+          >{{ place.name }}</li>
         </ul>
       </div>
       <div v-if="$page.bookEntry.notes">
@@ -36,7 +39,7 @@
         <div>{{ $page.bookEntry.publishDate }}</div>
         <div>
           By
-          <span v-html="$page.bookEntry.authors[0].name"></span>
+          <span v-html="$page.bookEntry.fields.authors[0].name"></span>
         </div>
       </div>
     </div>
@@ -44,32 +47,32 @@
 </template>
 
 <page-query>    
-    query Book($id: String!) {
-        bookEntry(id: $id) {
-            id
-            title
-            fields {
-            authors {
-                name
-            }
-            cover {
-                large
-            }
-            by_statement
-            publish_date
-            url
-            subject_places {
-                name
-            }
-            publish_places {
-                name
-            }
-            number_of_pages
-            notes
-            }
-        }
+query Book ($id: String!){
+  bookEntry (id: $id) {
+    id
+    title
+    fields {
+      authors {
+        name
+      },
+      cover {
+        large
+      }
+      by_statement
+      publish_date
+      url
+      subject_places {
+        name
+      },
+      publish_places {
+        name
+      },
+      number_of_pages
+      notes
     }
-
+  }
+}
+</page-query>             
 </page-query>
 
 <script>
