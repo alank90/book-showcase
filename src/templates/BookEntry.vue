@@ -47,7 +47,7 @@
 </template>
 
 <page-query>    
-query Book ($id: String!){
+query Book ($id: ID!){
   bookEntry (id: $id) {
     id
     title
@@ -73,7 +73,6 @@ query Book ($id: String!){
   }
 }
 </page-query>             
-</page-query>
 
 <script>
 export default {

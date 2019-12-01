@@ -4,6 +4,8 @@
 
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
+
+/* jshint esversion:9 */
 const axios = require("axios");
 
 bookISBNs = [
@@ -18,7 +20,6 @@ bookISBNs = [
   "9780881033731"
 ];
 
-/* jshint ignore:start */
 module.exports = function(api) {
   api.loadSource(async store => {
     let books = [];
@@ -38,9 +39,8 @@ module.exports = function(api) {
        by calling the store.addCollection() method. First we add a collection(basically a MySQL table) 
        and define our schema in GraphQL */
 
-    const contentType = store.addContentType({
-      typeName: "BookEntry", // Collection name we give for our schema/database
-      route: "showcase/:id" // vue route that will serve up the page when a node is queried
+    const contentType = store.addCollection({
+      typeName: "BookEntry" // Collection name we give for our schema/database
     });
 
     /* Next we store our data retrieved via axios from openlibrary in the GraphQL
@@ -58,4 +58,3 @@ module.exports = function(api) {
     }
   });
 };
-/* jshint ignore:end */
