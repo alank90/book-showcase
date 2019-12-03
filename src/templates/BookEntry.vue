@@ -2,7 +2,7 @@
   <Layout>
     <div class="book">
       <h2>
-        <a :href="$page.bookEntry.url">{{ $page.bookEntry.title }}</a>
+        <a :href="$page.bookEntry.url">{{ $page.bookEntry.book_title }}</a>
       </h2>
 
       <div>
@@ -50,7 +50,7 @@
 query Book ($id: ID!){
   bookEntry (id: $id) {
     id
-    title
+    book_title
     fields {
       authors {
         name

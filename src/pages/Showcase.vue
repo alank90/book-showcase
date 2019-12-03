@@ -10,7 +10,7 @@
       <!-- $page.allBookEntry.edges contains results of <page-query> fetch -->
       <div class="book" v-for="book in $page.allBookEntry.edges" :key="book.node.id">
         <h2>
-          <g-link :to="`showcase/${book.node.id}`">{{ book.node.title }}</g-link>
+          <g-link :to="`showcase/${book.node.id}`">{{ book.node.book_title }}</g-link>
         </h2>
 
         <div class="content">
@@ -41,7 +41,7 @@
             edges{
                 node{
                       id
-                      title
+                      book_title
                       fields {
                         authors{
                           name

@@ -37,19 +37,19 @@ module.exports = function(api) {
 
     /* Use Gridsome’s Data Store API to create a new collection in our GraphQL data layer 
        by calling the store.addCollection() method. First we add a collection(basically a MySQL table) 
-       and define our schema in GraphQL */
+    */
 
     const contentType = store.addCollection({
       typeName: "BookEntry" // Collection name we give for our schema/database
     });
 
     /* Next we store our data retrieved via axios from openlibrary in the GraphQL
-       data layer. GraphQL allows you to define types, their fields and allows 
-       you to query or mutate those types’ fields. */
+       data layer and define our schema in GraphQL. GraphQL allows you to define types, 
+       their fields and allows you to query or mutate those types’ fields. */
     for (const item of books) {
       contentType.addNode({
         // add a node to contentType collection
-        title: item.title,
+        book_title: item.title,
         date: item.publish_date,
         fields: {
           ...item
